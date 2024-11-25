@@ -1,8 +1,8 @@
 Porting iw on android.
 
-Using libnl-3 code: https://github.com/dschuermann/libnl-3-android
+Using libnl-3.11.0 https://github.com/thom311/libnl
 
-Using iw code: http://git.kernel.org/cgit/linux/kernel/git/jberg/iw.git
+Using iw 6.9 https://git.sipsolutions.net/iw.git/
 
 cd android\_toolchain
 
