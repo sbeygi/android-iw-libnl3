@@ -49,7 +49,7 @@ LOCAL_MODULE := nl-3
 LOCAL_SRC_FILES = \
 	addr.c attr.c cache.c cache_mngr.c cache_mngt.c data.c \
 	error.c handlers.c msg.c nl.c object.c socket.c utils.c \
-	version.c
+	version.c hashtable.c mpls.c hash.c
 
 # Android NDK misses some includes. They are copied from https://github.com/android/kernel_common/tree/android-3.4/include/
 NL_MY_INCLUDES := \
