@@ -28,7 +28,7 @@ jobs:
       - name: Install NDK and Platform Tools
         run: |
           $HOME/android-sdk/cmdline-tools/latest/bin/sdkmanager \
-            "platforms;android-33" "ndk;27.1.6" "build-tools;33.0.2"
+            "platforms;android-33" "ndk;27.2.12479018" "cmake;3.31.0" " build-tools;30.0.3"
         env:
           ANDROID_SDK_ROOT: $HOME/android-sdk
 
