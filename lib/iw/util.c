@@ -148,7 +148,7 @@ const char *iftype_name(enum nl80211_iftype iftype)
 }
 
 static const char *commands[NL80211_CMD_MAX + 1] = {
-[NL80211_CMD_UNSPEC] = "unspec",
+	[NL80211_CMD_UNSPEC] = "unspec",
 	[NL80211_CMD_GET_WIPHY] = "get_wiphy",
 	[NL80211_CMD_SET_WIPHY] = "set_wiphy",
 	[NL80211_CMD_NEW_WIPHY] = "new_wiphy",
@@ -262,6 +262,28 @@ static const char *commands[NL80211_CMD_MAX + 1] = {
 	[NL80211_CMD_TDLS_CANCEL_CHANNEL_SWITCH] = "tdls_cancel_channel_switch",
 	[NL80211_CMD_WIPHY_REG_CHANGE] = "wiphy_reg_change",
 	[NL80211_CMD_ABORT_SCAN] = "abort_scan",
+	[NL80211_CMD_START_NAN] = "start_nan",
+	[NL80211_CMD_STOP_NAN] = "stop_nan",
+	[NL80211_CMD_ADD_NAN_FUNCTION] = "add_nan_function",
+	[NL80211_CMD_DEL_NAN_FUNCTION] = "del_nan_function",
+	[NL80211_CMD_CHANGE_NAN_CONFIG] = "change_nan_config",
+	[NL80211_CMD_NAN_MATCH] = "nan_match",
+	[NL80211_CMD_SET_MULTICAST_TO_UNICAST] = "set_multicast_to_unicast",
+	[NL80211_CMD_UPDATE_CONNECT_PARAMS] = "update_connect_params",
+	[NL80211_CMD_SET_PMK] = "set_pmk",
+	[NL80211_CMD_DEL_PMK] = "del_pmk",
+	[NL80211_CMD_PORT_AUTHORIZED] = "port_authorized",
+	[NL80211_CMD_RELOAD_REGDB] = "reload_regdb",
+	[NL80211_CMD_EXTERNAL_AUTH] = "external_auth",
+	[NL80211_CMD_STA_OPMODE_CHANGED] = "sta_opmode_changed",
+	[NL80211_CMD_CONTROL_PORT_FRAME] = "control_port_frame",
+	[NL80211_CMD_GET_FTM_RESPONDER_STATS] = "get_ftm_responder_stats",
+	[NL80211_CMD_PEER_MEASUREMENT_START] = "peer_measurement_start",
+	[NL80211_CMD_PEER_MEASUREMENT_RESULT] = "peer_measurement_result",
+	[NL80211_CMD_PEER_MEASUREMENT_COMPLETE] = "peer_measurement_complete",
+	[NL80211_CMD_NOTIFY_RADAR] = "notify_radar",
+	[NL80211_CMD_UPDATE_OWE_INFO] = "update_owe_info",
+	[NL80211_CMD_PROBE_MESH_LINK] = "probe_mesh_link",
 };
 
 static char cmdbuf[100];
