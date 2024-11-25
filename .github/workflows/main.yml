@@ -1,0 +1,6 @@
+steps:
+  - uses: actions/checkout@v3
+  - uses: nttld/setup-ndk@v1
+    with:
+      ndk-version: r26d
+  - run: ndk-build NDK_PROJECT_PATH=./android_toolchain
