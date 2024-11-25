@@ -37,7 +37,7 @@ jobs:
         run: |
           echo "export ANDROID_SDK_ROOT=$HOME/android-sdk" >> $GITHUB_ENV
           echo "export PATH=\$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:\$ANDROID_SDK_ROOT/platform-tools:\$PATH" >> $GITHUB_ENV
-          echo "export NDK_HOME=\$ANDROID_SDK_ROOT/ndk/27.1.6" >> $GITHUB_ENV
+          echo "export NDK_HOME=\$ANDROID_SDK_ROOT/ndk/27.2.12479018" >> $GITHUB_ENV
           echo "export PATH=\$NDK_HOME:\$NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin:\$PATH" >> $GITHUB_ENV
         shell: bash
 
