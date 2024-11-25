@@ -41,18 +41,8 @@ jobs:
           echo "export PATH=\$NDK_HOME:\$NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin:\$PATH" >> $GITHUB_ENV
         shell: bash
 
-      # Ensure ndk-build is available
-      - name: Verify ndk-build Path
-        run: |
-          if [ ! -f "$NDK_HOME/ndk-build" ]; then
-            echo "ndk-build not found in $NDK_HOME"
-            exit 1
-          fi
-          chmod +x $NDK_HOME/ndk-build
-          echo "ndk-build found and is executable"
-
       # Build using ndk-build
       - name: Build Project with ndk-build
         run: |
-          ndk-build NDK_PROJECT_PATH=./android_toolchain clean
-          ndk-build NDK_PROJECT_PATH=./android_toolchain
+          $HOME/android-sdk/ndk/27.2.12479018/ndk-build NDK_PROJECT_PATH=./android_toolchain clean
+          $HOME/android-sdk/ndk/27.2.12479018/ndk-build NDK_PROJECT_PATH=./android_toolchain
