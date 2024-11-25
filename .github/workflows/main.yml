@@ -1,4 +1,4 @@
-name: default
+name: Build with Android NDK Clang
 
 on: [push]
 
@@ -6,8 +6,42 @@ jobs:
   BuildBinaries:
     runs-on: ubuntu-latest
     steps:
+      # Check out the repository
       - uses: actions/checkout@v3
-      - uses: nttld/setup-ndk@v1
-        with:
-          ndk-version: r27
-      - run: ndk-build NDK_PROJECT_PATH=./android_toolchain clean  && ndk-build NDK_PROJECT_PATH=./android_toolchain
+
+      # Install the Android SDK and NDK
+      - name: Install Android SDK Command-Line Tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget unzip
+          mkdir -p $HOME/android-sdk
+          wget https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip -O cmdline-tools.zip
+          unzip cmdline-tools.zip -d $HOME/android-sdk
+          mv $HOME/android-sdk/cmdline-tools $HOME/android-sdk/cmdline-tools/latest
+          rm cmdline-tools.zip
+
+      - name: Accept SDK Licenses
+        run: |
+          yes | $HOME/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses
+
+      - name: Install NDK and Clang
+        run: |
+          $HOME/android-sdk/cmdline-tools/latest/bin/sdkmanager \
+            "platforms;android-33" "ndk;27.1.6" "build-tools;33.0.2"
+        env:
+          ANDROID_SDK_ROOT: $HOME/android-sdk
+
+      # Set up environment variables
+      - name: Set Environment Variables
+        run: |
+          echo "export ANDROID_SDK_ROOT=$HOME/android-sdk" >> $GITHUB_ENV
+          echo "export PATH=\$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:\$ANDROID_SDK_ROOT/platform-tools:\$PATH" >> $GITHUB_ENV
+          echo "export NDK_HOME=\$ANDROID_SDK_ROOT/ndk/27.1.6" >> $GITHUB_ENV
+          echo "export PATH=\$NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin:\$PATH" >> $GITHUB_ENV
+        shell: bash
+
+      # Build using ndk-build
+      - name: Build Project with ndk-build
+        run: |
+          ndk-build NDK_PROJECT_PATH=./android_toolchain clean
+          ndk-build NDK_PROJECT_PATH=./android_toolchain
